@@ -29,7 +29,7 @@ var todos = [
  */
 
 app.get('/', function homepage (req, res) {
-  res.sendFile(__dirname + '/views/search.html');
+  res.sendFile(__dirname + '/views/index.html');
 });
 
 
@@ -41,13 +41,13 @@ app.get('/api/todos/search', function search(req, res){
 	var toSearch = req.query.q;
 	var newArray = [];
 
-	var found; 
+	var found;
 	todos.forEach(function (e) {
 		if(e.task === toSearch) {
 			found = parseInt(todos.indexOf(e));
 			newArray.push(todos[found]);
 			console.log(newArray);
-			
+
 	}
 	});
 
@@ -62,15 +62,15 @@ app.get('/api/todos', function index(req, res) {
 });
 
 app.post('/api/todos', function create(req, res) {
-	var todoList= req.body; 
+	var todoList= req.body;
 	var task = req.body.task;
-	var description = req.body.description; 
+	var description = req.body.description;
 	var newId = todos.length + 1;
 	todoList = {task: task, description: description, _id: newId};
 	if(todos.length>0){
 		newId = todos[todos.length - 1]._id + 1;
 	} else {
-		newId = 1; 
+		newId = 1;
 	}
 	todos.push(todoList);
 	res.json(todoList);
@@ -93,8 +93,8 @@ app.put('/api/todos/:id', function update(req, res) {
 });
 
 app.delete('/api/todos/:id', function destroy(req, res) {
-	var getId = parseInt(req.params.id); 
-	var found; 
+	var getId = parseInt(req.params.id);
+	var found;
 	todos.forEach(function (e) {
 		if(e._id === getId) {
 			found = todos.indexOf(e);

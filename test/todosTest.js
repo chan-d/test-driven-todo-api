@@ -27,7 +27,7 @@ describe('Todos API', function() {
         var data = JSON.parse(body);
         expect(data).to.have.property("todos");
         expect(data.todos).to.be.an("array");
-        var first_todo = data.todos[0]
+        var first_todo = data.todos[0];
         expect(first_todo).to.have.property("task");
         expect(first_todo).to.have.property("description");
         expect(first_todo).to.have.property("_id");
@@ -39,7 +39,7 @@ describe('Todos API', function() {
       request(base_url + '/api/todos', function (error, response, body) {
         expect(function(){ JSON.parse(body); }).to.not.throw(SyntaxError);
         var data = JSON.parse(body);
-        var first_todo = data.todos[0]
+        var first_todo = data.todos[0];
         expect(first_todo).to.have.property("task");
         expect(first_todo).to.have.property("description");
         expect(first_todo).to.have.property("_id");
@@ -112,8 +112,8 @@ describe('Todos API', function() {
           } finally {}
           done();
         }
-      )
-    })
+      );
+    });
 
 
     it('should respond with status 200 - Success', function (done) {
@@ -280,7 +280,7 @@ describe('Todos API', function() {
         expect(last_todo.task).to.equal("surf");
 
         done();
-      })
+      });
     });
   });
 });
